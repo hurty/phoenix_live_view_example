@@ -17,7 +17,11 @@ config :demo, DemoWeb.Endpoint,
   load_from_system_env: true,
   url: [scheme: "https", host: "liveview.cleverapps.io", port: 443],
   force_ssl: [hsts: true, rewrite_on: [:x_forwarded_proto]],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  check_origin: [
+    "https://liveview.cleverapps.io",
+    "https://app-a931d8ce-ebd4-445b-9de8-804ad59b8dd3.cleverapps.io"
+  ]
 
 # Do not print debug messages in production
 config :logger, level: :info
