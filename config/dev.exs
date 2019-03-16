@@ -70,8 +70,8 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :demo, Demo.Repo,
-  hostname: System.get_env("POSTGRESQL_ADDON_HOST"),
-  username: System.get_env("POSTGRESQL_ADDON_USER"),
-  database: System.get_env("POSTGRESQL_ADDON_DB"),
-  password: System.get_env("POSTGRESQL_ADDON_PASSWORD"),
-  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "1")
+  username: "postgres",
+  password: "postgres",
+  database: "demo_dev",
+  hostname: "localhost",
+  pool_size: 10

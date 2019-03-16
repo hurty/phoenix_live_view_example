@@ -59,6 +59,9 @@ config :logger, level: :info
 #     config :demo, DemoWeb.Endpoint, server: true
 #
 
-# Finally import the config/prod.secret.exs
-# which should be versioned separately.
-import_config "prod.secret.exs"
+config :demo, Demo.Repo,
+  hostname: System.get_env("POSTGRESQL_ADDON_HOST"),
+  username: System.get_env("POSTGRESQL_ADDON_USER"),
+  database: System.get_env("POSTGRESQL_ADDON_DB"),
+  password: System.get_env("POSTGRESQL_ADDON_PASSWORD"),
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "5")
