@@ -64,12 +64,9 @@ defmodule DemoWeb.TablesLive do
   end
 
   def update_table(table, new_values) do
-    IO.inspect(table, label: "table avant")
-
     Enum.reduce(new_values, table, fn {coord, new_value}, acc_table ->
       update_cell(acc_table, coord, new_value)
     end)
-    |> IO.inspect(label: "table apres")
   end
 
   def update_cell(table, coord, new_value) do
