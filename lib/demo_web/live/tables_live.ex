@@ -5,7 +5,7 @@ defmodule DemoWeb.TablesLive do
 
   def render(assigns) do
     ~L"""
-      <form phx-change="update_cell">
+      <form phx-change="update_table">
         <table>
           <%= for {row, row_index} <- Enum.with_index(@table) do %>
             <tr value="<%= row_index %>">
@@ -48,7 +48,7 @@ defmodule DemoWeb.TablesLive do
     {:noreply, update(socket, :selected_cell, fn _ -> cell_coord end)}
   end
 
-  def handle_event("update_cell", params, socket) do
+  def handle_event("update_table", params, socket) do
     {:noreply, update(socket, :table, &update_table(&1, params))}
   end
 
