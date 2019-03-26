@@ -12,9 +12,13 @@ defmodule DemoWeb.TablesLive do
               <%= for {cell, cell_index} <- Enum.with_index(row) do %>
                 <td phx-click="select_cell" phx-value="<%= "#{row_index},#{cell_index}" %>">
                   <%= if @selected_cell == "#{row_index},#{cell_index}" do %>
-                      <input type="text" name="<%= "#{row_index},#{cell_index}" %>" value="<%= cell %>" />
+                      <input type="text" name="<%= "#{row_index},#{cell_index}" %>" value="<%= cell %>" autofocus />
                   <% else %>
-                    <%= if cell do %><%= cell %><% else %><i>Empty</i><% end %>
+                    <%= if cell do %>
+                      <%= cell %>
+                    <% else %>
+                      <i>Empty</i>
+                    <% end %>
                   <% end %>
                 </td>
               <% end %>
